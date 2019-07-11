@@ -31,7 +31,7 @@ export class AppComponent implements OnInit {
 	}
 
 	update() {
-		const nowTimestamp = new Date();
+		const nowTimestamp = Date.now();
 		this.timeSpan = (nowTimestamp - this.wSTTimestamp);
 		this.timeSpanString = this.msToTime(this.timeSpan);
 		this.money = this.hourlyPay / 60 / 60 / 1000 * this.timeSpan;
