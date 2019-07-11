@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class AppComponent implements OnInit {
 	REFRESHMILLI = 100;
 
-	hourlyPay = 58.82;
+	hourlyPay = 50;
 	money = 0;
 	timeStart = "0900";
 	timeSpan: number;
