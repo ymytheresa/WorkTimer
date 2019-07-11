@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-root',
@@ -10,12 +11,12 @@ export class AppComponent implements OnInit {
 
 	hourlyPay = 50;
 	money = 0;
-	timeStart = "0900";
+	timeStart:string;
 	timeSpan: number;
 	timeSpanString: string;
 	wSTTimestamp: number;
 	menuIsShown = true;
-	constructor() {}
+	constructor(private cookieService: CookieService) {}
 	ngOnInit() {
 		console.log("ngOnInit()");
 		this.init();
@@ -26,8 +27,16 @@ export class AppComponent implements OnInit {
 
 	init() {
 		console.log("init()");
+		this.timeStart = this.getCookie("timeStart", "0900");
+		this.hourlyPay = this.getCookie("hourlyPay", 50);
 		this.wSTTimestamp = new Date().setHours(parseInt(this.timeStart.substring(0, 2)), parseInt(this.timeStart.substring(2, 4)), 0, 0);
-		console.log("this.wSTTimestamp: " + this.wSTTimestamp);
+	}
+
+	fullUpdate() {
+		console.log("fullUpdate()");
+		this.cookieService.set( 'timeStart', this.timeStart );
+		this.cookieService.set( 'hourlyPay', this.hourlyPay + "" );
+		this.wSTTimestamp = new Date().setHours(parseInt(this.timeStart.substring(0, 2)), parseInt(this.timeStart.substring(2, 4)), 0, 0);
 	}
 
 	update() {
@@ -53,5 +62,15 @@ export class AppComponent implements OnInit {
 	  var mins = s % 60;
 	  var hrs = (s - mins) / 60;
 	  return hrs.toString().padStart(2, "0") + ':' + mins.toString().padStart(2, "0") + ':' + secs.toString().padStart(2, "0") + '.' + ms.toString().padStart(3, "0");
+	}
+
+	getCookie(parameter, defaultValue) {
+		const value = this.cookieService.get(parameter);
+		if(value == "") {
+			console.log("cookie " + parameter + " not found.")
+			return defaultValue;
+		} else {
+			return value;
+		}
 	}
 }
