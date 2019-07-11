@@ -22,11 +22,11 @@
 			</div>
 			<div class="form-group">
 				<label for="hourlypay">Hourly Pay</label>
-			    <input type="number" class="form-control" id="hourlypay" placeholder="Hourly Pay" [(ngModel)]="hourlyPay">
+			    <input type="number" class="form-control" id="hourlypay" placeholder="Hourly Pay" (input)="fullUpdate()" [(ngModel)]="hourlyPay">
 			</div>
 			<div class="form-group">
 				<label for="workstarttime">Work Start Time (HHmm)</label>
-			    <input type="text" class="form-control" id="workstarttime" placeholder="Work Start Time" (input)="init()" [(ngModel)]="timeStart">
+			    <input type="text" class="form-control" id="workstarttime" placeholder="Work Start Time" (input)="fullUpdate()" [(ngModel)]="timeStart">
 			</div>
 		</div>
 	</div>
