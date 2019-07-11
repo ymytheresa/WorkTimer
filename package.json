@@ -1,6 +1,6 @@
 {
   "name": "work-timer",
-  "version": "0.1.1",
+  "version": "1",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
