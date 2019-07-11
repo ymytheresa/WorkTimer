@@ -1,9 +1,17 @@
-.huge1 .huge2 {
-	
+.huge1, .huge2 {
+	font-family: 'IBM Plex Mono', monospace;
 }
 .huge1 {
 	font-size: 100px;
 }
 .huge2 {
 
+}
+.fullHeight {
+	height: 100vh;
+	display: flex;
+	align-items: center;
+	div {
+		width:100%;
+	}
 }
