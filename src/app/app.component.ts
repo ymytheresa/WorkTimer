@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
+import { version } from '../../package.json';
 
 @Component({
   selector: 'app-root',
@@ -16,9 +17,9 @@ export class AppComponent implements OnInit {
 	timeSpanString: string;
 	wSTTimestamp: number;
 	menuIsShown = true;
+	public version: string = version;
 	constructor(private cookieService: CookieService) {}
 	ngOnInit() {
-		console.log("ngOnInit()");
 		this.init();
 		setInterval(() => {
 			this.update();
