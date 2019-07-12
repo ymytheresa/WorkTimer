@@ -26,16 +26,17 @@ export class AppComponent implements OnInit {
 	}
 
 	init() {
-		console.log("init()");
 		this.timeStart = this.getCookie("timeStart", "0900");
 		this.hourlyPay = this.getCookie("hourlyPay", 50);
 		this.wSTTimestamp = new Date().setHours(parseInt(this.timeStart.substring(0, 2)), parseInt(this.timeStart.substring(2, 4)), 0, 0);
 	}
 
 	fullUpdate() {
-		console.log("fullUpdate()");
-		this.cookieService.set( 'timeStart', this.timeStart );
-		this.cookieService.set( 'hourlyPay', this.hourlyPay + "" );
+		const expirationDate = new Date();
+		// date that expires 10 years after, that you may not want someone to know how much you earn 10 years ago.
+		expirationDate.setDate(expirationDate.getDate() + 315360000);
+		this.cookieService.set('timeStart', this.timeStart, expirationDate);
+		this.cookieService.set('hourlyPay', this.hourlyPay + "", expirationDate);
 		this.wSTTimestamp = new Date().setHours(parseInt(this.timeStart.substring(0, 2)), parseInt(this.timeStart.substring(2, 4)), 0, 0);
 	}
 
