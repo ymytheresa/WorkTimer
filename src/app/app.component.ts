@@ -18,6 +18,7 @@ export class AppComponent implements OnInit {
 	wSTTimestamp: number;
 	menuIsShown = true;
 	public version: string = version;
+	darkModeCheckboxIsSelected = false;
 	constructor(private cookieService: CookieService) {}
 	ngOnInit() {
 		this.init();
@@ -30,6 +31,11 @@ export class AppComponent implements OnInit {
 		this.timeStart = this.getCookie("timeStart", "0900");
 		this.hourlyPay = this.getCookie("hourlyPay", 50);
 		this.wSTTimestamp = new Date().setHours(parseInt(this.timeStart.substring(0, 2)), parseInt(this.timeStart.substring(2, 4)), 0, 0);
+	
+		// dark mode
+		if(window.matchMedia('(prefers-color-scheme: dark)').matches) {
+			this.darkModeCheckboxIsSelected = true;
+		}
 	}
 
 	fullUpdate() {
@@ -54,6 +60,16 @@ export class AppComponent implements OnInit {
 
 	showMenuClick() {
 		this.menuIsShown = true;
+	}
+
+	darkModeCheckboxChange() {
+		if(this.darkModeCheckboxIsSelected) {
+			document.body.classList.remove("themedLightOverride");
+			document.body.classList.add("themedDarkOverride");
+		} else {
+			document.body.classList.add("themedLightOverride");
+			document.body.classList.remove("themedDarkOverride");
+		}
 	}
 
 	msToTime(s) {

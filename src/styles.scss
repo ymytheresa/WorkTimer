@@ -1,2 +1,40 @@
 /* You can add global styles to this file, and also import other style files */
 @import "./app/css/bootstrap.min.css";
+
+@media (prefers-color-scheme: dark) {
+	.themed {
+		background-color: black;
+		* {
+			color: white;
+		}
+	}
+}
+
+@media (prefers-color-scheme: light) {
+	.themed {
+		background-color: white;
+		* {
+			color: black;
+		}
+	}
+}
+
+.themed {
+	input[type="text"], input[type="number"] {
+		background: transparent;
+	}
+}
+
+.themedDarkOverride {
+	background-color: black;
+	* {
+		color: white;
+	}
+}
+
+.themedLightOverride {
+	background-color: white;
+	* {
+		color: black;
+	}
+}

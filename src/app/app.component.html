@@ -9,17 +9,21 @@
 </div>
 <div *ngIf="menuIsShown" class="container">
 	<div class="row">
-		<div class="col-12">
-			<div class="container">
-				<div class="row">
-					<div class="col-9">
-						<h1>Settings</h1>
-					</div>
-					<div class="col-3">
-						<button type="button" class="btn btn-primary" (click)="hideMenuClick()">Hide Menu</button>
-					</div>
-				</div>
+		<div class="col-6">
+			<h1>Settings</h1>
+		</div>
+		<div class="col-3">
+			<div class="custom-control custom-switch">
+			  	<input type="checkbox" class="custom-control-input" id="darkModeCheckbox" [(ngModel)]="darkModeCheckboxIsSelected" (change)="darkModeCheckboxChange()">
+			  	<label class="custom-control-label" for="darkModeCheckbox">Dark Mode</label>
 			</div>
+		</div>
+		<div class="col-3">
+			<button type="button" class="btn btn-primary" (click)="hideMenuClick()">Hide Menu</button>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-12">
 			<div class="form-group">
 				<label for="hourlypay">Hourly Pay</label>
 			    <input type="number" class="form-control" id="hourlypay" placeholder="Hourly Pay" (input)="fullUpdate()" [(ngModel)]="hourlyPay">
