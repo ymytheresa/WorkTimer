@@ -40,8 +40,9 @@ export class AppComponent implements OnInit {
 
 	fullUpdate() {
 		const expirationDate = new Date();
-		// date that expires 10 years after, that you may not want someone to know how much you earn 10 years ago.
-		expirationDate.setDate(expirationDate.getDate() + 315360000);
+		// date that expires 1 years after, that you may not want someone to know how much you earn 10 years ago.
+		expirationDate.setDate(expirationDate.getDate() + 365);
+		console.log("expirationDate: " + expirationDate);
 		this.cookieService.set('timeStart', this.timeStart, expirationDate);
 		this.cookieService.set('hourlyPay', this.hourlyPay + "", expirationDate);
 		this.wSTTimestamp = new Date().setHours(parseInt(this.timeStart.substring(0, 2)), parseInt(this.timeStart.substring(2, 4)), 0, 0);
